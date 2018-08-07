@@ -1,0 +1,20 @@
+测试推送证书生成命令行:
+openssl pkcs12 -in cn_com_imall_b2b_aps_dev.p12 -out cn_com_imall_b2b_aps_dev.pem -nodes 
+正式推送证书生成命令行:
+openssl pkcs12 -in cn_com_imall_b2b_aps_pro.p12 -out cn_com_imall_b2b_aps_pro.pem -nodes 
+
+密码都是: 13572469
+
+------------------------------------------------
+应用名称 imall-b2b(产品)[IOS]
+
+APP ID: 7940806
+API KEY:abXgXDPkIhSYmQ2KvVGSIt0u
+SECRET KEY:b4zFwDhcSGoC68SP9LxbikRaFzg3sPiC
+    
+应用名称 imall-b2b(产品)[ANDROID]
+应用包名  cn.com.imall.b2b
+
+APP ID: 6518330
+API KEY:drGpHGV5j9vCzmPCuGEhSEWQ
+SECRET KEY:iglCojurZk8ss3FcAZm7QueGSx8seG0k

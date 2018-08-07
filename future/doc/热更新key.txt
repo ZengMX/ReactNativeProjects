@@ -1,0 +1,8 @@
+android：
+Production   rg6dfymIgD9G7DkBMNiP26Mv1FLq4ksvOXqos
+Staging    pWODTGeOfN7ec1Kp0Wd8Hwl9buka4ksvOXqos
+
+
+ios：
+Production    p95NaFwhVEc3r4wRhm0rg0nZK9sC4ksvOXqos
+Staging     sJUPmQZAtVY4qcLXVFR3EN6PBrZd4ksvOXqos

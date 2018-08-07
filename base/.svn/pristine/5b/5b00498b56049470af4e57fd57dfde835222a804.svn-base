@@ -1,0 +1,183 @@
+/**
+ * 模拟器调试模式下，android定位、选择地址在重新reload后失效
+ */
+import React, { Component } from 'react';
+import {
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    Platform,
+    NativeAppEventEmitter,
+} from 'react-native';
+import { BaseView, Toast, Loading } from 'future/src/widgets';
+
+import Fetch from 'future/src/lib/Fetch';
+import * as Encode64 from 'future/src/lib/base64encode';
+
+// import BMKMapView from '@imall-test/react-native-baidu-map'; //安卓地图
+import * as BaiDuMap from '@imall-test/react-native-baidu-map'; //安卓地图
+
+import BMKLocation from '@imall-test/react-native-loaction'; //定位
+import BMKMapIos from './BMKMapIos';
+import ShowAddressIos from './ShowAddressIos';
+
+
+
+export default class BMKMap extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            subtitle: '',
+            title: '',
+            longitude: 113.441565,
+            latitude: 23.169353,
+        };
+    }
+
+    componentDidMount() {
+        if (IS_IOS) {
+            // 开始监听定位请求
+            BMKLocation.findEvents()
+            // 处理EventReminder事件
+            this.listenReminder = NativeAppEventEmitter.addListener(
+                'EventReminder', (result) => {
+                    if (result.errorcode === '000') {
+                        Toast.show('获取地理位置成功！111');
+                        console.log('自动定位111', result);
+                    } else {
+                        Toast.show('获取地理位置失败！111');
+                    }
+                });
+        }
+    }
+
+
+    componentWillUnmount() {
+        if (IS_IOS) {
+            // 清理ios定位事件监听
+            this.listenReminder && this.listenReminder.remove();
+        }
+    }
+
+
+    //打开地图
+    openMap = () => {
+        Loading.show();
+        // 实际坐标点转换为百度坐标
+        new Fetch({
+            url: 'http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=' + this.state.longitude + '&y=' + this.state.latitude,
+            method: 'GET',
+            show_error: true
+        }).dofetch().then((data) => {
+            console.log('打开地图', data);
+            if (IS_IOS) {
+                this.props.navigator.push({
+                    params: {
+                        annotations: [{
+                            title: this.state.title || "商家名称1",
+                            subtitle: this.state.subtitle || '商家位置1',
+                            longitude: Encode64.base64decode(data.x),
+                            latitude: Encode64.base64decode(data.y)
+                        },
+                        {
+                            title: this.state.title || "商家名称2",
+                            subtitle: this.state.subtitle || '商家位置2',
+                            longitude: "113.45111378168",
+                            latitude: "23.17616116709"
+                        }
+                        ],
+                        mapUseType: 0,
+                        getCoor: {
+                            longitude: this.state.longitude.toString(),
+                            latitude: this.state.latitude.toString(),
+                        }
+                    },
+                    component: BMKMapIos
+                })
+            } else {
+                BaiDuMap.BaduMapView.showMap([{
+                    subtitle: this.state.subtitle || '商家名称',
+                    title: this.state.title || "商家位置",
+                    longitude: Encode64.base64decode(data.x),
+                    latitude: Encode64.base64decode(data.y)
+                }],
+                    {
+                        longitude: this.state.longitude.toString(),
+                        latitude: this.state.latitude.toString(),
+                    });
+            }
+        }).catch((error) => {
+            Toast.show('网络异常');
+            console.log('=> catch error: ', error);
+        }).finally(() => {
+            Loading.hide();
+        });
+    }
+
+    //定位
+    autoLocation = () => {
+        if (IS_IOS) {
+            // ios定位请求
+            BMKLocation.startLocation();
+        } else {
+            // android定位
+            BaiDuMap.getLocation((result) => {
+                Toast.show('获取地理位置成功！');
+                console.log('自动定位', result);
+            }, (error) => {
+                Toast.show('获取地理位置失败！');
+            });
+        }
+    }
+
+
+    //选择收货地址
+    showAddress = () => {
+        if (IS_IOS) {
+            this.props.navigator.push({
+                params: {
+                    selectAddress: this.selectAddress
+                },
+                component: ShowAddressIos
+            });
+        } else {
+            BaiDuMap.BaduMapView.showDragMap(this.selectAddress);
+        }
+    }
+
+    //选择地址回调函数
+    selectAddress = (selectData) => {
+        console.log('选择的地址:', selectData)
+    }
+
+
+    render() {
+        return (
+            <BaseView navigator={this.props.navigator} ref={base => this.base = base}>
+                <TouchableOpacity style={styles.btnStyle} onPress={this.openMap} >
+                    <Text>打开地图</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnStyle} onPress={this.autoLocation}>
+                    <Text>定位</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnStyle} onPress={this.showAddress}>
+                    <Text>收货地址</Text>
+                </TouchableOpacity>
+            </BaseView>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+        marginTop: 64,
+    },
+    btnStyle: {
+        padding: 20,
+        backgroundColor: 'yellow'
+    }
+});

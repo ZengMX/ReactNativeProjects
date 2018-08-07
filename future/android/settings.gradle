@@ -1,0 +1,44 @@
+rootProject.name = 'future'
+include ':app'
+include ':@imall-test/react-native-phone-picker-android'
+project(':@imall-test/react-native-phone-picker-android').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-phone-picker-android/android')
+include ':@imall-test/react-native-photobrowser'
+project(':@imall-test/react-native-photobrowser').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-photobrowser/android')
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fs/android')
+include ':@imall-test/react-native-jpush'
+project(':@imall-test/react-native-jpush').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-jpush/android')
+include ':@imall-test/react-native-clock'
+project(':@imall-test/react-native-clock').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-clock/android')
+include ':@imall-test/react-native-jpush'
+project(':@imall-test/react-native-jpush').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-jpush/android')
+include ':@imall-test/react-native-image-picker'
+project(':@imall-test/react-native-image-picker').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-image-picker/android')
+include ':react-native-picker'
+project(':react-native-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-picker/android')
+include ':@imall-test/react-native-chrosslocation'
+project(':@imall-test/react-native-chrosslocation').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-chrosslocation/android')
+include ':rn-splash-screen'
+project(':rn-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/rn-splash-screen/android')
+include ':react-native-code-push'
+project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
+include ':@imall-test/react-native-status-android'
+project(':@imall-test/react-native-status-android').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-status-android/android')
+include ':@imall-test/react-native-photobrowser'
+project(':@imall-test/react-native-photobrowser').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-photobrowser/android')
+include ':rnkit-actionsheet-picker'
+project(':rnkit-actionsheet-picker').projectDir = new File(rootProject.projectDir, '../node_modules/rnkit-actionsheet-picker/android/app')
+include ':react-native-cookies'
+project(':react-native-cookies').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-cookies/android')
+include ':@imall-test/react-native-weixinpay'
+project(':@imall-test/react-native-weixinpay').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-weixinpay/android')
+include ':react-native-uploader'
+project(':react-native-uploader').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-uploader/android')
+include ':@imall-test/react-native-uppay'
+project(':@imall-test/react-native-uppay').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-uppay/android')
+include ':@imall-test/react-native-alipay'
+project(':@imall-test/react-native-alipay').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-alipay/android')
+include ':react-native-cookiemanager'
+project(':react-native-cookiemanager').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-cookiemanager/android')
+include ':react-native-spinkit'
+project(':react-native-spinkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-spinkit/android')

@@ -1,0 +1,92 @@
+import Styles from 'future/public/lib/styles/Styles';
+import { PixelRatio } from 'react-native';
+var SCREEN_WIDTH = require('Dimensions').get('window').width;
+export default styles = Styles.create({
+    scrollView:{
+        flex:1,
+        backgroundColor:'#fafafa'
+    },
+    topView:{
+        backgroundColor:'#5D6780',
+        height:95,
+        width:SCREEN_WIDTH,
+        flexDirection:'row',
+        justifyContent:'space-between'
+    },
+    userInfos:{
+        color:'#fff',
+        fontSize:15,
+        marginLeft:13,
+        marginTop:13
+    },
+    userAddr:{
+        color:'#fff',
+        fontSize:14,
+        marginLeft:13,
+        marginTop:11,
+        width:SCREEN_WIDTH-60
+    },
+    bottomMenu:{
+        backgroundColor:'#fff',
+        height:99,
+        width:SCREEN_WIDTH,
+        alignItems:'center',
+    },
+    amountTotalInfo:{
+        marginTop:13,
+        fontSize:13,
+        color:'#333',
+    },
+    amount:{
+        fontSize:17,
+        color:'#ff6600',
+    },
+    submitBtn:{
+        marginTop:13,
+        height:45,
+        width:SCREEN_WIDTH-26,
+        backgroundColor:'#34457D',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    newPlanModal:{
+        width:270,
+        height:150,
+        top:100,
+        backgroundColor:'rgba(234,234,234,0.90)',
+        borderRadius:12,
+        alignItems:'center',
+        justifyContent:'space-between'
+    },
+    plan_NewBtn:{fontSize:17,color:'#333',marginVertical:15},
+    plan_inputNm:{ 
+        width: 240, 
+        height: 33, 
+        fontSize: 14, 
+        padding: 0 ,
+        backgroundColor:'#fff',
+        marginTop:3,
+        marginLeft:5
+    },
+    plan_cancel:{
+        marginTop:15,
+        height:45,
+        flexDirection:'row',
+        borderTopWidth:1/PixelRatio.get(),
+        borderColor:'#999'
+    },
+    plan_cancelBtn:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
+        borderRightWidth:1/PixelRatio.get(),
+        borderColor:'#999'
+    },
+    plan_cancelTitle:{color:'#007aff',fontSize:16},
+    plan_sureBtn:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    plan_sureTitle:{color:'#007aff',fontSize:16}
+});

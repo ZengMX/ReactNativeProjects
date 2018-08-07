@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">易淘药</string>
+    <string name="PUSH_URL">http://www.imall.com.cn:3333/</string>
+</resources>

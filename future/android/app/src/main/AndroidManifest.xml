@@ -1,0 +1,177 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.com.imall.b2b2b.etaoyao"
+    android:versionCode="10"
+    android:versionName="2.6.0">
+    <!-- 基本权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 获取相册 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+
+    <!-- 极光推送配置    －－－－－－－－start－－－－－－－－    -->
+    <permission
+        android:name="cn.com.imall.b2b2b.etaoyao.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <!-- Required -->
+    <uses-permission android:name="cn.com.imall.b2b2b.etaoyao.permission.JPUSH_MESSAGE" />
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+
+    <!-- 极光推送配置    －－－－－－－－end－－－－－－－－    -->
+
+
+    <application
+      android:name=".MainApplication"
+      android:allowBackup="true"
+      android:label="@string/app_name"
+      android:icon="@mipmap/appicon"
+      android:theme="@style/AppTheme">
+      <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+         <!--微信支付回调 -->
+        <activity
+        android:name=".wxapi.WXPayEntryActivity"
+        android:exported="true"
+        android:launchMode="singleTop"/>
+        <!--银联支付-->
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.unionpay.UPPayWapActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+         <!--支付宝-->
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
+        <!-- 极光推送配置    －－－－－－－－start－－－－－－－－    -->
+
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+        <!-- 例如: -->
+        <!-- 发到xxx市场的 APK 可以设置为 xxx-market。 -->
+        <!-- 目前这个渠道统计功能的报表还未开放。-->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="xxx-market"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="548d5c3ae8eb132e15b5fda3"/>
+
+        <!-- Required SDK 核心功能-->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="cn.com.imall.b2b2b.etaoyao"/>
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="cn.com.imall.b2b2b.etaoyao"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="cn.com.imall.b2b2b.etaoyao" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- User defined. 用户自定义的广播接收器-->
+        <receiver
+            android:name="com.imall.react_native_jpush.module.JPushModule$JPushReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <category android:name="cn.com.imall.b2b2b.etaoyao" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 极光推送配置    －－－－－－－－end－－－－－－－－    -->
+
+    </application>
+
+</manifest>

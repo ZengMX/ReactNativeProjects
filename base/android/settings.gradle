@@ -1,0 +1,59 @@
+rootProject.name = 'future'
+include ':react-native-svg'
+project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-svg/android')
+include ':react-native-code-push'
+project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
+include ':react-native-uploader'
+project(':react-native-uploader').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-uploader/android')
+include ':react-native-spinkit'
+project(':react-native-spinkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-spinkit/android')
+include ':@imall-test/rnkit-actionsheet-picker'
+project(':@imall-test/rnkit-actionsheet-picker').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/rnkit-actionsheet-picker/android/app')
+include ':@imall-test/rn-splash-screen'
+project(':@imall-test/rn-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/rn-splash-screen/android')
+include ':@imall-test/react-native-weixinpay'
+project(':@imall-test/react-native-weixinpay').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-weixinpay/android')
+include ':@imall-test/react-native-uppay'
+project(':@imall-test/react-native-uppay').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-uppay/android')
+include ':@imall-test/react-native-switchbutton'
+project(':@imall-test/react-native-switchbutton').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-switchbutton/android')
+include ':@imall-test/react-native-status-android'
+project(':@imall-test/react-native-status-android').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-status-android/android')
+include ':@imall-test/react-native-statistics'
+project(':@imall-test/react-native-statistics').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-statistics/android')
+include ':@imall-test/react-native-sharesdk'
+project(':@imall-test/react-native-sharesdk').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-sharesdk/android')
+include ':@imall-test/react-native-ripple'
+project(':@imall-test/react-native-ripple').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-ripple/android')
+include ':@imall-test/react-native-qrcode'
+project(':@imall-test/react-native-qrcode').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-qrcode/android')
+include ':@imall-test/react-native-picker'
+project(':@imall-test/react-native-picker').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-picker/android')
+include ':@imall-test/react-native-photobrowser'
+project(':@imall-test/react-native-photobrowser').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-photobrowser/android')
+include ':@imall-test/react-native-jpush'
+project(':@imall-test/react-native-jpush').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-jpush/android')
+include ':@imall-test/react-native-image-picker'
+project(':@imall-test/react-native-image-picker').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-image-picker/android')
+include ':@imall-test/react-native-http-cache'
+project(':@imall-test/react-native-http-cache').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-http-cache/android')
+include ':@imall-test/react-native-cookiemanager'
+project(':@imall-test/react-native-cookiemanager').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-cookiemanager/android')
+include ':@imall-test/react-native-clock'
+project(':@imall-test/react-native-clock').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-clock/android')
+include ':@imall-test/react-native-chrosslocation'
+project(':@imall-test/react-native-chrosslocation').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-chrosslocation/android')
+include ':@imall-test/react-native-chat'
+project(':@imall-test/react-native-chat').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-chat/android')
+include ':@imall-test/react-native-brushboard'
+project(':@imall-test/react-native-brushboard').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-brushboard/android')
+include ':@imall-test/react-native-blur'
+project(':@imall-test/react-native-blur').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-blur/android')
+include ':@imall-test/react-native-banner'
+project(':@imall-test/react-native-banner').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-banner/android')
+include ':@imall-test/react-native-baidu-map'
+project(':@imall-test/react-native-baidu-map').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-baidu-map/android')
+include ':@imall-test/react-native-alipay'
+project(':@imall-test/react-native-alipay').projectDir = new File(rootProject.projectDir, '../node_modules/@imall-test/react-native-alipay/android')
+
+include ':app'

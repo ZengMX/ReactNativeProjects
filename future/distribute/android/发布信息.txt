@@ -1,0 +1,3 @@
+b2b.keystore
+	password: 20150415
+	key alias: qjyy
