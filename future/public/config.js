@@ -1,9 +1,7 @@
 export default {
-	//  host: 'http://eyb2b.imall.com.cn/',
 	// host: 'http://192.168.1.205:10000/',
 	// host: 'http://192.168.1.92:8080/',
 	// host: 'http://192.168.1.205:8087/',
-	host: 'http://www.etaoyao.com/',
 	// debug: false,
 	debug: true,
 	version: '1.0.0',
